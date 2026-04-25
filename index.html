@@ -1,1 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dev Patel | Student Digital Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f9fc;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      padding: 24px 8%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      opacity: 0.9;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 40px;
+      padding: 70px 8%;
+      background: linear-gradient(180deg, #ffffff, #edf4ff);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      color: #0f172a;
+      margin-bottom: 16px;
+    }
+
+    .hero h2 {
+      font-size: 22px;
+      color: #1d4ed8;
+      margin-bottom: 22px;
+      font-weight: 600;
+    }
+
+    .hero p {
+      font-size: 17px;
+      max-width: 720px;
+      color: #374151;
+      margin-bottom: 26px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #1d4ed8;
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 2px solid #1d4ed8;
+      color: #1d4ed8;
+      background: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+    }
+
+    .profile-card {
+      background: white;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+      border: 1px solid #dbeafe;
+      text-align: center;
+    }
+
+    .profile-photo {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      border: 6px solid #e0f2fe;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.18);
+      background: #eff6ff;
+    }
+
+    .profile-card h3 {
+      font-size: 24px;
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      font-size: 15px;
+      margin-bottom: 8px;
+      color: #4b5563;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #6b7280;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .content-box {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .content-box p {
+      margin-bottom: 15px;
+      color: #374151;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e5e7eb;
+      transition: 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.13);
+    }
+
+    .card h3 {
+      color: #1e3a8a;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #4b5563;
+      font-size: 15px;
+    }
+
+    .skill-list {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-list span {
+      background: #eff6ff;
+      color: #1e40af;
+      padding: 7px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      border: 1px solid #bfdbfe;
+    }
+
+    .timeline {
+      max-width: 950px;
+      margin: auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      background: white;
+      border-left: 5px solid #1d4ed8;
+      padding: 22px;
+      border-radius: 12px;
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08);
+    }
+
+    .timeline-item h3 {
+      color: #0f172a;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: #4b5563;
+    }
+
+    .contact-box {
+      max-width: 800px;
+      margin: auto;
+      background: #0f172a;
+      color: white;
+      padding: 35px;
+      border-radius: 18px;
+      box-shadow: 0 12px 35px rgba(15, 23, 42, 0.22);
+    }
+
+    .contact-box h3 {
+      font-size: 26px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      margin-bottom: 10px;
+      color: #e5e7eb;
+    }
+
+    footer {
+      text-align: center;
+      background: #020617;
+      color: #cbd5e1;
+      padding: 22px;
+      font-size: 14px;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 15px;
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      color: #78350f;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 50px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Dev Patel</div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#goals">Goals</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <h1>Dev Patel | Student Digital Portfolio</h1>
+        <h2>Learning today, building for tomorrow.</h2>
+        <p>
+          Welcome to my digital portfolio. I am a Civil Engineering student with an interest in learning new concepts, improving my technical knowledge, and developing practical skills for my future career. This portfolio is created as a future-ready academic and professional profile where I can add my projects, achievements, certificates, skills, and learning experiences over time.
+        </p>
+        <p>
+          At present, I am still learning and building my skills, but this platform will help me keep all my academic work, future achievements, and personal development in one organized place.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#projects">View Projects</a>
+          <a class="btn btn-secondary" href="#contact">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <img class="profile-photo" src="data:image/webp;base64,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" alt="Dev Patel profile photo" />
+        <h3>Dev Patel</h3>
+        <p>Civil Engineering Student</p>
+        <p>Pandit Deendayal Energy University</p>
+        <p>Gujarat, India</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-title">
+        <h2>About Me</h2>
+        <p>A short introduction about my academic journey and learning interests.</p>
+      </div>
+      <div class="content-box">
+        <p>
+          My name is Dev Patel, and I am currently pursuing my studies in Civil Engineering. I am interested in understanding how engineering concepts are used in real-life construction, infrastructure, transportation, sustainable development, and project planning.
+        </p>
+        <p>
+          As a student, I believe that learning should not be limited only to classroom theory. Practical knowledge, project work, teamwork, report writing, and presentation skills are also important for becoming a good engineer. I have created this portfolio to maintain a record of my academic growth and future achievements.
+        </p>
+        <p>
+          Even though I am still at the learning stage, I want to use this portfolio as a professional space where I can add my projects, certificates, technical skills, presentations, internships, and other accomplishments in the future.
+        </p>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-title">
+        <h2>Education</h2>
+        <p>My current academic background and learning areas.</p>
+      </div>
+      <div class="content-box">
+        <p><strong>Bachelor’s Degree in Civil Engineering</strong></p>
+        <p><strong>College:</strong> Pandit Deendayal Energy University</p>
+        <p><strong>Status:</strong> Currently Pursuing</p>
+        <p>
+          During my civil engineering studies, I am learning subjects related to construction materials, structural engineering, transportation engineering, surveying, environmental engineering, estimation, and project planning. These subjects are helping me understand the basic and advanced concepts required in the field of civil engineering.
+        </p>
+        <p>
+          Apart from academics, I am also trying to improve my presentation skills, report writing, digital learning, and practical understanding of engineering problems.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <h2>Skills and Learning Areas</h2>
+        <p>Skills I am currently learning and skills I want to improve in the future.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Technical Skills Currently Learning</h3>
+          <p>These are the technical areas I am gradually developing through academic work and practice.</p>
+          <div class="skill-list">
+            <span>Civil Engineering Basics</span>
+            <span>Building Planning</span>
+            <span>Estimation</span>
+            <span>Concrete Technology</span>
+            <span>Transportation Concepts</span>
+            <span>Structural Concepts</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Software Skills to Improve</h3>
+          <p>I want to improve these software skills because they are useful for academic and professional work.</p>
+          <div class="skill-list">
+            <span>AutoCAD Basics</span>
+            <span>MS Word</span>
+            <span>PowerPoint</span>
+            <span>Excel</span>
+            <span>Design Tools</span>
+            <span>Engineering Software</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Professional Skills</h3>
+          <p>These skills are important for working in teams and presenting ideas clearly.</p>
+          <div class="skill-list">
+            <span>Communication</span>
+            <span>Teamwork</span>
+            <span>Presentation</span>
+            <span>Report Writing</span>
+            <span>Time Management</span>
+            <span>Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Projects</h2>
+        <p>Academic and future project work that can be updated over time.</p>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <h3>Digital Portfolio Development</h3>
+          <p>
+            This portfolio itself is one of my academic digital projects. The main purpose of this project is to create a professional online profile where my academic journey, learning progress, skills, and future achievements can be displayed in an organized way.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Civil Engineering Presentation Work</h3>
+          <p>
+            I have worked on academic presentations related to civil engineering topics. These presentations helped me improve my understanding of technical concepts and also improved my confidence in explaining topics in front of teachers and classmates.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Future Academic Projects</h3>
+          <p>
+            In the future, I will add project work related to building planning, estimation, structural models, transportation engineering, sustainable construction, and research-based topics.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Planned Model or Design Work</h3>
+          <p>
+            This section will be updated with images, drawings, or models after completing practical civil engineering assignments or design-based academic work.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Research-Based Learning</h3>
+          <p>
+            I plan to include research proposals, literature review work, and topic-based studies that connect civil engineering concepts with real-world challenges and future solutions.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Internship or Field Learning</h3>
+          <p>
+            After gaining internship or field experience, I will add details about the work learned, site observations, construction practices, and important professional lessons.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <div class="section-title">
+        <h2>Achievements and Certifications</h2>
+        <p>A future update section for certificates, workshops, and achievements.</p>
+      </div>
+      <div class="content-box">
+        <p>
+          This section is created to record my present and future achievements. At the current stage, I am still working on developing my skills and gaining more experience. As I participate in workshops, competitions, seminars, internships, technical events, and certification courses, I will update this section.
+        </p>
+        <p>
+          Future achievements to add include online course certificates, workshop participation, seminar certificates, internship experience, technical event participation, college-level achievements, project completion certificates, and competition certificates.
+        </p>
+        <div class="note">
+          This section will be updated regularly as I complete new activities and gain new achievements.
+        </div>
+      </div>
+    </section>
+
+    <section id="goals">
+      <div class="section-title">
+        <h2>Future Goals</h2>
+        <p>My short-term and long-term academic and professional goals.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Short-Term Goals</h3>
+          <p>
+            My short-term goals are to improve my academic performance, learn AutoCAD basics properly, improve presentation skills, participate in technical activities, complete good-quality projects, and develop better confidence in explaining engineering concepts.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Skill Development Goals</h3>
+          <p>
+            I want to improve my knowledge of structural design software, project management tools, quantity estimation, sustainable construction techniques, Excel-based calculations, and professional report writing.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Long-Term Goals</h3>
+          <p>
+            My long-term goal is to become a skilled and responsible civil engineer who can contribute to real-life infrastructure and construction projects. I want to gain industry experience through internships and work on practical engineering problems.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact Me</h2>
+        <p>Basic contact information for academic and professional communication.</p>
+      </div>
+      <div class="contact-box">
+        <h3>Get in Touch</h3>
+        <p><strong>Name:</strong> Dev Patel</p>
+        <p><strong>Course:</strong> Civil Engineering Student</p>
+        <p><strong>College:</strong> Pandit Deendayal Energy University</p>
+        <p><strong>Email:</strong> devkpatel10@gmail.com </p>  
+        <p><strong>Location:</strong> Ahmedabad, Gujarat, India</p>
+        <p>
+          Thank you for visiting my digital portfolio. I will keep updating this portfolio as I complete new projects, gain certificates, and develop new skills.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Dev Patel | Student Digital Portfolio</p>
+  </footer>
+</body>
+</html>
 
